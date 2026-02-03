@@ -1,0 +1,395 @@
+.wrap {
+  max-width: 720px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.cardTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.uploadRow {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.textarea {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.uploadBoxSmall {
+  display: inline-flex;
+  padding: 10px 16px;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.uploadBoxSmall:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.avatarRow {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.avatarRow .useAccountAvatarBtn {
+  flex: 0 0 25%;
+  max-width: 25%;
+  margin-top: 0;
+  padding: 16px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 80px;
+}
+
+.avatarRow .uploadBox {
+  flex: 1;
+  min-width: 0;
+  min-height: 80px;
+  justify-content: center;
+}
+
+.avatarPreviewWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatarPreview {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+}
+
+.avatarPreviewLabel {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.uploadBoxText {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.useAccountAvatarBtn {
+  margin-top: 12px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-primary);
+}
+
+.useAccountAvatarBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.useAccountAvatarBtnActive {
+  border-color: var(--accent);
+  background: var(--accent-light);
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.catchphraseRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.catchphraseRow .input {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.addTagBtn {
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  border-radius: var(--radius);
+  flex-shrink: 0;
+}
+
+.addTagBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: var(--accent-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+
+.tagInput {
+  width: 120px;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.tagText {
+  cursor: pointer;
+  color: var(--text-primary);
+}
+
+.tagText:hover {
+  text-decoration: underline;
+}
+
+.tagBtn {
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-secondary);
+}
+
+.tagBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tagDel {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.tagDel:hover {
+  background: rgba(0,0,0,0.06);
+  color: var(--accent);
+}
+
+.previewSection {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.previewTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.previewRow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.previewRow .input {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.playBtn {
+  padding: 10px 20px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  flex-shrink: 0;
+}
+
+.playBtn:hover {
+  background: var(--accent-hover);
+  color: #fff;
+}
+
+.playBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.uploadBox {
+  flex: 1;
+  min-width: 140px;
+  padding: 20px;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.uploadBox:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.uploadLabel {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.uploadInput {
+  display: none;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.input {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+}
+
+.input:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.select {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  background: var(--bg-primary);
+  max-width: 240px;
+}
+
+.sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.sliderRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.sliderRow input[type="range"] {
+  flex: 1;
+  max-width: 200px;
+  accent-color: var(--accent);
+}
+
+.actions {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.saveError {
+  font-size: 0.9rem;
+  color: var(--accent);
+  margin: 0;
+}
+
+.primaryBtn {
+  padding: 12px 24px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+}
+
+.primaryBtn:hover {
+  background: var(--accent-hover);
+  color: #fff;
+}

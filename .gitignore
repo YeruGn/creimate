@@ -1,0 +1,15 @@
+node_modules
+dist
+.env
+.env.local
+*.local
+
+# server
+server/node_modules
+server/uploads
+server/data
+server/.env
+
+# SQLite
+*.db
+*.db-journal

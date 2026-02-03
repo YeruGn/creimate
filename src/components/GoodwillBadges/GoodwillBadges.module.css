@@ -1,0 +1,68 @@
+.wrap {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+}
+
+.title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent) 0%, #c93d5c 100%);
+  border: 2px solid var(--bg-card);
+  box-shadow: var(--shadow);
+}
+
+.badgeUnlocked {
+  opacity: 1;
+}
+
+.badgeLocked {
+  opacity: 0.5;
+  background: var(--bg-sidebar);
+  color: var(--text-muted);
+}
+
+.badgeCurrent {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-light);
+}
+
+.levelLabel {
+  font-size: 0.65rem;
+  margin-top: 2px;
+  text-align: center;
+}
+
+.badgeItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
