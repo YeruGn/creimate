@@ -1,7 +1,6 @@
 import { useParams, Routes, Route, Navigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import CreatorHeader from '../components/CreatorHeader/CreatorHeader'
-import GoodwillBadges from '../components/GoodwillBadges/GoodwillBadges'
 import { mockCreators } from '../data/mockData'
 import styles from './CreatorProfilePage.module.css'
 
