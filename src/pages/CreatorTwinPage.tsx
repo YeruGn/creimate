@@ -33,12 +33,6 @@ export default function CreatorTwinPage() {
   const [catchphrases, setCatchphrases] = useState<CatchphraseTag[]>([])
   const [newCatchphrase, setNewCatchphrase] = useState('')
   const [chatStyle, setChatStyle] = useState('')
-  const [voiceFile, setVoiceFile] = useState<File | null>(null)
-  const [voiceSpeed, setVoiceSpeed] = useState(1)
-  const [voicePitch, setVoicePitch] = useState(1)
-  const [voiceSweetness, setVoiceSweetness] = useState(0.5)
-  const [voicePreviewText, setVoicePreviewText] = useState('')
-  const [isPlayingPreview, setIsPlayingPreview] = useState(false)
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [saveError, setSaveError] = useState<string | null>(null)
@@ -61,9 +55,6 @@ export default function CreatorTwinPage() {
             }))
           )
         }
-        if (data.voice_speed != null) setVoiceSpeed(data.voice_speed)
-        if (data.voice_pitch != null) setVoicePitch(data.voice_pitch)
-        if (data.voice_sweetness != null) setVoiceSweetness(data.voice_sweetness)
       })
       .catch(() => {})
       .finally(() => {
@@ -85,9 +76,6 @@ export default function CreatorTwinPage() {
           chat_reference_text: chatText,
           chat_style: chatStyle,
           catchphrases: catchphrases.map((c) => c.text),
-          voice_speed: voiceSpeed,
-          voice_pitch: voicePitch,
-          voice_sweetness: voiceSweetness,
         })
       } else {
         if (avatarDataUrl && avatarDataUrl.startsWith('data:')) {
@@ -102,12 +90,10 @@ export default function CreatorTwinPage() {
           chat_reference_text: chatText,
           chat_style: chatStyle,
           catchphrases: catchphrases.map((c) => c.text),
-          voice_speed: voiceSpeed,
-          voice_pitch: voicePitch,
-          voice_sweetness: voiceSweetness,
         })
         if (res.twin_avatar_url) setAvatarDataUrl(res.twin_avatar_url)
       }
+      window.dispatchEvent(new CustomEvent('creator-updated'))
     } catch (e) {
       setSaveError(e instanceof Error ? e.message : '保存に失敗しました')
     } finally {
@@ -138,13 +124,6 @@ export default function CreatorTwinPage() {
     setCatchphrases((prev) =>
       prev.map((c) => (c.id === id ? { ...c, editing } : c))
     )
-  }
-
-  const playVoicePreview = () => {
-    if (!voicePreviewText.trim()) return
-    setIsPlayingPreview(true)
-    // 実際は音声APIを呼ぶ。ここではデモ用に少し遅延して停止
-    setTimeout(() => setIsPlayingPreview(false), 2000)
   }
 
   return (
@@ -307,85 +286,6 @@ export default function CreatorTwinPage() {
             ))}
           </select>
         </label>
-      </section>
-
-      {/* ③ 音声モデル */}
-      <section className={styles.card}>
-        <h2 className={styles.cardTitle}>③ 音声モデル</h2>
-        <p className={styles.hint}>
-          あなたの声をアップロードしてモデルを訓練すると、AI分身がファンに音声で返信できます。語速・音高・甘さを微調整できます。アップロード後は試聴で確認し、似ていない場合は微調整を続けてください。
-        </p>
-        <label className={styles.uploadBox}>
-          <span className={styles.uploadLabel}>音声サンプルをアップロード</span>
-          <input
-            type="file"
-            accept="audio/*"
-            className={styles.uploadInput}
-            onChange={(e) => setVoiceFile(e.target.files?.[0] ?? null)}
-          />
-          {voiceFile ? voiceFile.name : 'クリックしてアップロード（3〜10分のクリアな録音を推奨）'}
-        </label>
-        <div className={styles.sliders}>
-          <label className={styles.sliderRow}>
-            <span>語速</span>
-            <input
-              type="range"
-              min="0.5"
-              max="2"
-              step="0.1"
-              value={voiceSpeed}
-              onChange={(e) => setVoiceSpeed(Number(e.target.value))}
-            />
-            <span>{voiceSpeed.toFixed(1)}x</span>
-          </label>
-          <label className={styles.sliderRow}>
-            <span>音高</span>
-            <input
-              type="range"
-              min="0.8"
-              max="1.2"
-              step="0.05"
-              value={voicePitch}
-              onChange={(e) => setVoicePitch(Number(e.target.value))}
-            />
-            <span>{voicePitch.toFixed(2)}</span>
-          </label>
-          <label className={styles.sliderRow}>
-            <span>甘さ</span>
-            <input
-              type="range"
-              min="0"
-              max="1"
-              step="0.1"
-              value={voiceSweetness}
-              onChange={(e) => setVoiceSweetness(Number(e.target.value))}
-            />
-            <span>{Math.round(voiceSweetness * 100)}%</span>
-          </label>
-        </div>
-        <div className={styles.previewSection}>
-          <h3 className={styles.previewTitle}>試聴</h3>
-          <p className={styles.hint}>
-            文章を入力して「再生」を押すと、訓練した音声モデルで読み上げます。声が似ていないと感じたら、上のスライダーで微調整してから再度試聴してください。
-          </p>
-          <div className={styles.previewRow}>
-            <input
-              type="text"
-              className={styles.input}
-              placeholder="例：こんにちは、ありがとうね♡"
-              value={voicePreviewText}
-              onChange={(e) => setVoicePreviewText(e.target.value)}
-            />
-            <button
-              type="button"
-              className={styles.playBtn}
-              onClick={playVoicePreview}
-              disabled={!voicePreviewText.trim() || isPlayingPreview}
-            >
-              {isPlayingPreview ? '再生中...' : '再生'}
-            </button>
-          </div>
-        </div>
       </section>
 
       <div className={styles.actions}>

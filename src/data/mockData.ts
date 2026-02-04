@@ -88,11 +88,36 @@ export const mockAiTwin: AiTwin = {
 }
 
 export const mockChatMessages = [
-  { id: '1', role: 'user' as const, content: 'こんにちは！', timestamp: Date.now() - 60000 },
+  { id: '1', role: 'user' as const, content: 'こんにちは！', timestamp: Date.now() - 300000 },
   {
     id: '2',
     role: 'assistant' as const,
     content: 'こんにちは♡ リカだよ。今日も話してくれてありがとう～',
-    timestamp: Date.now() - 55000,
+    isVoice: false,
+    timestamp: Date.now() - 295000,
+  },
+  { id: '3', role: 'user' as const, content: '昨日の投稿すごくよかった！', timestamp: Date.now() - 280000 },
+  {
+    id: '4',
+    role: 'assistant' as const,
+    content: 'ありがとう〜♡ そう言ってもらえて嬉しい！また撮るね♪',
+    isVoice: true,
+    timestamp: Date.now() - 275000,
+  },
+  { id: '5', role: 'user' as const, content: '次はどんなのアップするの？', timestamp: Date.now() - 260000 },
+  {
+    id: '6',
+    role: 'assistant' as const,
+    content: '今度は水着の新作を準備中だよ〜。楽しみにしていてね💕',
+    isVoice: false,
+    timestamp: Date.now() - 255000,
+  },
+  { id: '7', role: 'user' as const, content: 'わくわく！待ってるね', timestamp: Date.now() - 240000 },
+  {
+    id: '8',
+    role: 'assistant' as const,
+    content: 'うん、また話そうね〜♡',
+    isVoice: true,
+    timestamp: Date.now() - 235000,
   },
 ]

@@ -6,9 +6,9 @@ import styles from './CreatorLayout.module.css'
 export default function CreatorLayout() {
   const navigate = useNavigate()
 
-  const handleChatNavigate = (page: string) => {
+  const handleChatNavigate = (page: string, state?: Record<string, unknown>) => {
     const path = `/creator/${page}`
-    navigate(path)
+    navigate(path, state ? { state } : undefined)
   }
 
   return (

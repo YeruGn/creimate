@@ -40,6 +40,8 @@
   cursor: move;
   border: 2px solid var(--border);
   flex-shrink: 0;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .previewCanvas {

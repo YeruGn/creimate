@@ -45,15 +45,14 @@ export default function AvatarCropModal({ imageUrl, onConfirm, onCancel }: Avata
     []
   )
 
-  const drawPreview = useCallback(() => {
+  useEffect(() => {
     const img = imgRef.current
     if (!img || !imageLoaded || imgSize.w <= 0 || imgSize.h <= 0) return
-    drawToCanvas(img, imgSize.w, imgSize.h, zoom, pos)
-  }, [imageLoaded, imgSize, zoom, pos, drawToCanvas])
-
-  useEffect(() => {
-    drawPreview()
-  }, [drawPreview])
+    const raf = requestAnimationFrame(() => {
+      drawToCanvas(img, imgSize.w, imgSize.h, zoom, pos)
+    })
+    return () => cancelAnimationFrame(raf)
+  }, [zoom, pos, imageLoaded, imgSize.w, imgSize.h, drawToCanvas])
 
   const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
     const img = e.currentTarget
@@ -75,20 +74,30 @@ export default function AvatarCropModal({ imageUrl, onConfirm, onCancel }: Avata
   }, [imageUrl])
 
   const handleMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault()
     dragRef.current = { active: true, startX: e.clientX, startY: e.clientY, startPos: { ...pos } }
   }
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = useCallback((e: MouseEvent) => {
     if (!dragRef.current.active) return
     setPos({
       x: dragRef.current.startPos.x + (e.clientX - dragRef.current.startX),
       y: dragRef.current.startPos.y + (e.clientY - dragRef.current.startY),
     })
-  }
+  }, [])
 
-  const handleMouseUp = () => {
+  const handleMouseUp = useCallback(() => {
     dragRef.current.active = false
-  }
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('mouseup', handleMouseUp)
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('mouseup', handleMouseUp)
+    }
+  }, [handleMouseMove, handleMouseUp])
 
   const handleConfirm = () => {
     const canvas = canvasRef.current
@@ -118,9 +127,7 @@ export default function AvatarCropModal({ imageUrl, onConfirm, onCancel }: Avata
         <div
           className={styles.previewWrap}
           onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
+          role="presentation"
         >
           <canvas
             ref={canvasRef}

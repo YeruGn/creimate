@@ -2,7 +2,6 @@ import { useState } from 'react'
 import styles from './CreatorTwinSetupPage.module.css'
 
 export default function CreatorTwinSetupPage() {
-  const [step, setStep] = useState(1)
   const [name, setName] = useState('')
   const [avatar, setAvatar] = useState('')
   const [catchphrase, setCatchphrase] = useState('')

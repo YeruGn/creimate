@@ -2,8 +2,8 @@ import { Link, NavLink } from 'react-router-dom'
 import styles from './CreatorSidebar.module.css'
 
 const mainNav = [
-  { to: '/creator/twin', label: 'AI対話分身管理', icon: '👤' },
   { to: '/creator/creation', label: '創作センター', icon: '🎨' },
+  { to: '/creator/twin', label: 'AI対話分身管理', icon: '👤' },
   { to: '/creator/content', label: 'コンテンツ管理', icon: '📦' },
   { to: '/creator/messages', label: 'メッセージ管理', icon: '💬' },
   { to: '/creator/analytics', label: 'データセンター', icon: '📊' },

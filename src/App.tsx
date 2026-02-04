@@ -20,19 +20,20 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/creators" element={<CreatorsPage />} />
-        <Route path="/creator/:creatorId/*" element={<CreatorProfilePage />} />
         <Route path="/chat/:creatorId" element={<FanChatPage />} />
         <Route path="/messages" element={<MessagesPage />} />
+        {/* 创作者后台嵌套路由必须放在 /creator/:creatorId 之前，否则 /creator/creation 会被当成创作者主页 */}
         <Route path="/creator" element={<CreatorLayout />}>
           <Route index element={<Navigate to="creation" replace />} />
-          <Route path="twin" element={<CreatorTwinPage />} />
           <Route path="creation" element={<CreatorCreationPage />} />
+          <Route path="twin" element={<CreatorTwinPage />} />
           <Route path="content" element={<CreatorContentManagePage />} />
           <Route path="messages" element={<CreatorMessagesManagePage />} />
           <Route path="analytics" element={<CreatorAnalyticsPage />} />
           <Route path="settings" element={<CreatorSettingsPage />} />
           <Route path="account" element={<CreatorAccountPage />} />
         </Route>
+        <Route path="/creator/:creatorId/*" element={<CreatorProfilePage />} />
       </Routes>
     </Layout>
   )

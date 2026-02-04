@@ -117,3 +117,220 @@
   border-color: #dc2626;
   color: #dc2626;
 }
+
+/* 編集モーダル（投稿・商品） */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+}
+
+.modal {
+  background: var(--bg-primary);
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  max-width: 520px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-secondary);
+}
+
+.modalTitle {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.modalClose {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: var(--radius);
+}
+
+.modalClose:hover {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.modalBody {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.modalField {
+  margin-bottom: 20px;
+}
+
+.modalField:last-child {
+  margin-bottom: 0;
+}
+
+.modalLabel {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.modalInput {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: var(--bg-primary);
+  box-sizing: border-box;
+}
+
+.modalInput:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.modalTextarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  resize: vertical;
+  min-height: 120px;
+  background: var(--bg-primary);
+  box-sizing: border-box;
+}
+
+.modalTextarea:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.modalFooter {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding: 16px 24px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-secondary);
+}
+
+.modalFooter .secondaryBtn {
+  padding: 10px 20px;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.modalFooter .secondaryBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.modalFooter .primaryBtn {
+  padding: 10px 20px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.modalFooter .primaryBtn:hover {
+  background: var(--accent-hover);
+}
+
+/* 投稿プレビュー：长文本排版・图文链接穿插 */
+.postPreviewModal {
+  max-width: 640px;
+}
+
+.postBody {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+
+.postParagraph {
+  margin-bottom: 1em;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.postParagraph:last-child {
+  margin-bottom: 0;
+}
+
+.postImageWrap {
+  margin: 1em 0;
+}
+
+.postImage {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.postLinkWrap {
+  margin: 1em 0;
+}
+
+.postLink {
+  color: var(--accent);
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+.postLink:hover {
+  color: var(--accent-hover);
+}
+
+.postPreviewMeta {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* 投稿編集：1つの長い入力欄 */
+.postEditModal {
+  max-width: 560px;
+  max-height: 90vh;
+}
+
+.postEditModal .modalTextarea {
+  min-height: 280px;
+}

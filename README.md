@@ -34,6 +34,7 @@ npm run dev
 
 - **前端** `.env`: `VITE_API_URL` = 后端地址（例: `http://localhost:3000`）
 - **后端** `server/.env`: `PORT`、`FRONTEND_ORIGIN`（CORS）、`PUBLIC_URL`（头像等の絶対URL用）
+- **AI 对话**（可选）`server/.env`: `GROQ_API_KEY` = [Groq 免费 API Key](https://console.groq.com)（不配置则右侧 AI 助手会提示配置；**AI 音频试听**使用 Edge TTS，无需 Key）
 
 ## 部署（本番）
 
@@ -106,6 +107,22 @@ Railway 默认重启/重新部署会清空磁盘，SQLite 和上传的头像会�
 
 - 若 **Root Directory**、**Variables**、**Volume** 都设好了，保存后 Railway 会自动重新部署。
 - 或到 **Deployments** 里看最新一次部署是否成功；失败可点开看日志（一般是依赖或环境变量问题）。
+
+#### 若出现 “Build failed”
+
+1. **确认 Root Directory（必做）**  
+   在 Service → **Settings** → **Source** 里，**Root Directory** 必须填 **`server`**。  
+   - 若这里**为空或填错**，Railway 会按**仓库根目录**构建，执行的是前端的 `npm run build`（`tsc -b && vite build`），会报 TypeScript / 前端相关错误，且没有后端用的 `start` 脚本。  
+   - 改成 **`server`** 后保存，Railway 会重新部署，只构建并运行 `server` 目录下的 Node 后端。
+
+2. **看具体报错**  
+   点进 **Deployments** → 失败的那次部署 → **View Logs**，看是 “npm install” 失败还是 “start” 失败，记下错误信息。
+
+3. **改用 Docker 构建（推荐）**  
+   若日志里是 `better-sqlite3` 等原生模块编译失败，可改用项目里的 Dockerfile 构建：  
+   - 在 Service → **Settings** → **Build**（或 **Deploy**）里，把 **Builder** 改为 **Dockerfile**（并确认 **Dockerfile Path** 为 `server/Dockerfile` 或根目录为 `server` 时的 `Dockerfile`）。  
+   - 保存后重新部署。  
+   这样会在 Node 20 环境下安装依赖并启动，避免原生模块在默认环境里编译失败。
 
 #### 8. 验证后端
 

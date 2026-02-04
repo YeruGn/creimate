@@ -13,7 +13,7 @@ export default function FanChatPage() {
   const [voiceEnabled, setVoiceEnabled] = useState(false)
   const [tokens, setTokens] = useState(500)
   const [goodwill, setGoodwill] = useState(15)
-  const [unlockedLevels, setUnlockedLevels] = useState<number[]>([1])
+  const [unlockedLevels] = useState<number[]>([1])
 
   if (!creator || !creator.hasAiTwin) {
     return (

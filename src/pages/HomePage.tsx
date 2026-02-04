@@ -22,17 +22,17 @@ export default function HomePage() {
       <h2 className={styles.sectionTitle}>主な機能</h2>
       <div className={styles.features}>
         <div className={styles.card}>
-          <div className={styles.cardIcon}>👤</div>
-          <h3 className={styles.cardTitle}>AI数字分身</h3>
-          <p className={styles.cardDesc}>
-            顔・声・口癖・趣味などを登録してAI分身を作成。ファンはトークンで対話でき、好感度に応じて報酬コンテンツを解放。
-          </p>
-        </div>
-        <div className={styles.card}>
           <div className={styles.cardIcon}>🎨</div>
           <h3 className={styles.cardTitle}>AIコンテンツ作成</h3>
           <p className={styles.cardDesc}>
             AIで画像・動画・音声を生成し、文案も自動で作成。コンテンツパックとして販売可能。
+          </p>
+        </div>
+        <div className={styles.card}>
+          <div className={styles.cardIcon}>👤</div>
+          <h3 className={styles.cardTitle}>AI対話分身</h3>
+          <p className={styles.cardDesc}>
+            顔・声・口癖・趣味などを登録してAI分身を作成。ファンはトークンで対話でき、好感度に応じて報酬コンテンツを解放。
           </p>
         </div>
         <div className={styles.card}>
